@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle="TipMenu">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button (click)="addLocation()">
+        <ion-icon name="add"></ion-icon>Upload My Location
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content #content>
+  <div #map id="map"></div>
+</ion-content>
+
+<ion-menu id="TipMenu" persistent="true" side="left" [content]="content">
+
+    <ion-footer>
+      <button ion-button (click)='logout()'>logout</button>
+    </ion-footer>
+  
+    
+  </ion-menu>

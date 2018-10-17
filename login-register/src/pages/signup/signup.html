@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Sign up</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <form (ngSubmit)="signup()" [formGroup]="form">
+    <ion-list inset>
+
+        <ion-item>
+            <ion-label floating>First Name</ion-label>
+            <ion-input [formControl]="form.controls['first_name']" type="text"></ion-input>
+          </ion-item>
+    
+    
+          <div *ngIf="!form.controls.first_name.valid && 
+          form.controls.first_name.touched" class="validator-error">
+            This field is required
+          </div>
+          <ion-item>
+              <ion-label floating>Last Name</ion-label>
+              <ion-input [formControl]="form.controls['last_name']" type="text"></ion-input>
+            </ion-item>
+      
+      
+            <div *ngIf="!form.controls.last_name.valid && 
+            form.controls.last_name.touched" class="validator-error">
+              This field is required
+            </div>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input [formControl]="form.controls['email']" type="email"></ion-input>
+      </ion-item>
+
+
+      <div *ngIf="!form.controls.email.valid && form.controls.email.touched" class="validator-error">
+        Please enter a valid email.
+      </div>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input [formControl]="form.controls['password']" type="password"></ion-input>
+      </ion-item>
+
+      <div *ngIf="!form.controls.password.valid && form.controls.password.touched" class="validator-error">
+        Please enter a valid email.
+      </div>
+    </ion-list>
+
+    <div padding-horizontal>
+      <div class="form-error">{{signupError}}</div>
+
+      <button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
+    </div>
+  </form>
+</ion-content>

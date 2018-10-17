@@ -1,0 +1,70 @@
+<ion-header no-border>
+</ion-header>
+
+<ion-content no-bounce padding>
+
+  <ion-row class="app-icon-container">
+    <ion-col text-center>
+      <ion-icon name="ionic" class="app-icon-zoom"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]="credentialsForm">
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input [formControl]="credentialsForm.controls['email']" type="email"></ion-input>
+    </ion-item>
+
+    <div *ngIf="!credentialsForm.controls.email.valid &&
+        credentialsForm.controls.email.dirty" class="validator-error">
+      Please enter a valid email.
+    </div>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input [formControl]="credentialsForm.controls['password']" type="password"></ion-input>
+    </ion-item>
+
+    <div *ngIf="!credentialsForm.controls.password.valid &&
+        credentialsForm.controls.password.dirty" class="validator-error">
+      Please enter a valid password.
+    </div>
+
+    <div padding-horizontal>
+      <div class="form-error">{{loginError}}</div>
+    </div>
+    <ion-row class="sign-in-button-container">
+      <ion-col text-center>
+        <button ion-button block color="secondary" [disabled]="!credentialsForm.valid" (click)="onSignIn()">
+          Sign in
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button clear color="light" (click)="onForgotPassword()">
+          Forgot your password?
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-list>
+
+      <button ion-button icon-left block clear (click)="tryGoogleLogin()">
+        <ion-icon name="logo-google"></ion-icon>
+        Log in with Google
+      </button>
+
+      <button ion-button icon-left block clear (click)="signup()">
+        <ion-icon name="person-add"></ion-icon>
+        Sign up
+      </button>
+    </ion-list>
+
+  </form>
+
+  
+
+</ion-content>
